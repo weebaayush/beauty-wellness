@@ -1,0 +1,13 @@
+digraph val {
+  graph [rankdir=LR, fontname="Helvetica", nodesep=0.3, ranksep=0.35, bgcolor="white", pad=0.15];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9.5, fillcolor="white", color="#1a1a1a", width=1.6, height=1.05];
+  edge [color="#1a1a1a", arrowsize=0.6];
+  s1 [label=<<b>Stage 1</b><br/>Development<br/><font point-size="7.5">time-series CV<br/>on training period</font>>];
+  s2 [label=<<b>Stage 2</b><br/>Selection<br/><font point-size="7.5">validation period<br/>+ calibration</font>>];
+  s3 [label=<<b>Stage 3</b><br/>Final back-test<br/><font point-size="7.5">untouched test<br/>period, used once</font>>, fillcolor="#1a1a1a", fontcolor="white"];
+  s4 [label=<<b>Stage 4</b><br/>Robustness<br/><font point-size="7.5">segments, fairness,<br/>time, cold start</font>>];
+  s5 [label=<<b>Stage 5</b><br/>Business test<br/><font point-size="7.5">cost model, then<br/>A/B experiment</font>>, fillcolor="#FFF1E8", color="#E8590C"];
+  s6 [label=<<b>Stage 6</b><br/>Monitoring<br/><font point-size="7.5">weekly AUC, drift,<br/>fairness gate</font>>, fillcolor="#E8590C", fontcolor="white", color="#E8590C"];
+  s1 -> s2 -> s3 -> s4 -> s5 -> s6;
+  s6 -> s1 [style=dashed, color="#6b6b6b", constraint=false, label=" monthly retrain ", fontsize=7.5, fontcolor="#6b6b6b"];
+}

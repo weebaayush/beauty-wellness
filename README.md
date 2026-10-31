@@ -30,6 +30,10 @@ python -m src.modeling.feature_value            # feature-set ablation + decisio
 python -m src.modeling.train_models             # tune & compare 4 models, test, interpretation (~3-5 min)
 python -m src.modeling.robustness               # calibration, fairness, cold start, cost-based threshold
 
+# Week 6 - evaluation framework & business communication
+python -m src.evaluation.evaluate               # confusion, gains/lift, stability, segments, fairness, sensitivity, errors
+python -m src.evaluation.communication_figures  # dashboard mock-up, priority matrix, roadmap
+
 # Real data
 python src/download_data.py sephora             # needs a Kaggle API token
 python -m src.cleaning.pipeline --raw data/raw/sephora
@@ -50,7 +54,8 @@ beauty-wellness/
 │   ├── week2/                   # data sourcing strategy report
 │   ├── week3/                   # cleaning pipeline report, flowchart (.dot), figures/
 │   ├── week4/                   # EDA & feature engineering report, workflow (.dot), figures/
-│   └── week5/                   # predictive modelling report, figures/
+│   ├── week5/                   # predictive modelling report, figures/
+│   └── week6/                   # final evaluation & business-impact report, framework (.dot), figures/
 ├── models/                      # saved best model (generated, not tracked)
 ├── notebooks/                   # exploratory notebooks (Week 4+)
 ├── reports/                     # generated: cleaning log, data quality, EDA results, feature catalogue
@@ -72,6 +77,9 @@ beauty-wellness/
 │   │   ├── feature_value.py     # Week 4: feature ablation, permutation importance, scenario
 │   │   ├── train_models.py      # Week 5: LR / tree / forest / boosting, time-series CV, selection, interpretation
 │   │   └── robustness.py        # Week 5: calibration, fairness CIs, unseen products, cost threshold
+│   ├── evaluation/
+│   │   ├── evaluate.py          # Week 6: evaluation framework & business-impact analysis
+│   │   └── communication_figures.py  # Week 6: dashboard mock-up, priority matrix, roadmap
 │   └── reporting/
 │       └── make_figures.py      # Week 3 report figures
 ├── tests/
@@ -88,7 +96,7 @@ beauty-wellness/
 | 3 | Data cleaning & pre-processing pipeline — [report](docs/week3/), [code](src/cleaning/), [cleaning log](reports/cleaning_log.md), [before/after](reports/data_quality_before_after.md) | ✅ Done |
 | 4 | EDA & feature engineering — [report](docs/week4/), [features](src/features/), [EDA](src/eda/), [results](reports/eda_results.json) | ✅ Done |
 | 5 | Predictive modelling & algorithm selection — [report](docs/week5/), [code](src/modeling/), [results](reports/model_results.json) | ✅ Done |
-| 6 | Recommender prototype & dashboard | ⏳ |
+| 6 | Model evaluation, reporting & business impact — [final report](docs/week6/), [code](src/evaluation/), [results](reports/evaluation.json) | ✅ Done |
 
 ## Tools
 Python, pandas, NumPy, Matplotlib, Seaborn, Plotly, SciPy, statsmodels, scikit-learn, XGBoost/LightGBM, NLTK/spaCy, VADER, Hugging Face Transformers, BERTopic, SHAP, Streamlit
