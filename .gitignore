@@ -1,6 +1,12 @@
-data/*
+data/raw/
+data/interim/
+data/processed/
+data/external/
+data/*.csv
+data/*.json
 !data/.gitkeep
 __pycache__/
 .ipynb_checkpoints/
 .venv/
 *.pyc
+kaggle.json
