@@ -1,0 +1,358 @@
+{
+  "generated": "2026-10-31T16:16:10",
+  "meta": {
+    "config": "configs/cleaning.yaml",
+    "raw_dir": "data/raw/simulated",
+    "config_sha256": "083b79d6b162070a",
+    "pandas": "3.0.5"
+  },
+  "shapes": [
+    {
+      "stage": "1. raw",
+      "products": 1212,
+      "reviews": 61500
+    },
+    {
+      "stage": "2. standardised",
+      "products": 1212,
+      "reviews": 61500
+    },
+    {
+      "stage": "3. validity rules",
+      "products": 1212,
+      "reviews": 61500
+    },
+    {
+      "stage": "4. de-duplicated & integrity",
+      "products": 1200,
+      "reviews": 59743
+    },
+    {
+      "stage": "5. text & ingredients cleaned",
+      "products": 1200,
+      "reviews": 59743
+    },
+    {
+      "stage": "6. missing values handled",
+      "products": 1200,
+      "reviews": 59743
+    },
+    {
+      "stage": "7. outliers treated",
+      "products": 1200,
+      "reviews": 59743
+    },
+    {
+      "stage": "8. features engineered (merged)",
+      "products": 1200,
+      "reviews": 59743
+    },
+    {
+      "stage": "9. model-ready (train + test)",
+      "products": 1200,
+      "reviews": 52440
+    }
+  ],
+  "actions": [
+    {
+      "step": "schema",
+      "action": "products: all 8 required columns present",
+      "rows_affected": 0
+    },
+    {
+      "step": "schema",
+      "action": "reviews: all 12 required columns present",
+      "rows_affected": 0
+    },
+    {
+      "step": "standardise",
+      "action": "price strings parsed to float ($, 'USD', spaces removed)",
+      "rows_affected": 58
+    },
+    {
+      "step": "standardise",
+      "action": "brand names unified via canonical key",
+      "rows_affected": 67
+    },
+    {
+      "step": "standardise",
+      "action": "category spellings mapped to 6 canonical categories",
+      "rows_affected": 110
+    },
+    {
+      "step": "standardise",
+      "action": "size text parsed to millilitres (oz x 29.5735)",
+      "rows_affected": 1002
+    },
+    {
+      "step": "standardise",
+      "action": "highlights parsed from text to lists",
+      "rows_affected": 921
+    },
+    {
+      "step": "standardise",
+      "action": "rating text ('5 stars') converted to numbers",
+      "rows_affected": 117
+    },
+    {
+      "step": "standardise",
+      "action": "is_recommended Yes/No/1.0 values unified to 1/0",
+      "rows_affected": 527
+    },
+    {
+      "step": "standardise",
+      "action": "skin_type variants mapped to 4 canonical labels",
+      "rows_affected": 4337
+    },
+    {
+      "step": "standardise",
+      "action": "skin_tone variants mapped to 13 canonical labels",
+      "rows_affected": 2587
+    },
+    {
+      "step": "standardise",
+      "action": "dates in 4 formats parsed to one datetime type",
+      "rows_affected": 9231
+    },
+    {
+      "step": "validity",
+      "action": "prices outside $1-$1000 set to missing",
+      "rows_affected": 10
+    },
+    {
+      "step": "validity",
+      "action": "negative loves_count corrected (sign error -> absolute value)",
+      "rows_affected": 14
+    },
+    {
+      "step": "validity",
+      "action": "ratings outside 1-5 set to missing",
+      "rows_affected": 166
+    },
+    {
+      "step": "validity",
+      "action": "helpfulness on 0-100 scale rescaled to 0-1",
+      "rows_affected": 78
+    },
+    {
+      "step": "validity",
+      "action": "total_feedback_count recomputed as pos + neg where inconsistent",
+      "rows_affected": 282
+    },
+    {
+      "step": "validity",
+      "action": "dates after snapshot (2023-03-31) or before 2008-01-01 set to missing",
+      "rows_affected": 70
+    },
+    {
+      "step": "validity",
+      "action": "unparseable dates left as missing",
+      "rows_affected": 63
+    },
+    {
+      "step": "validity",
+      "action": "1-star reviews marked 'recommended' flagged as conflicts",
+      "rows_affected": 3
+    },
+    {
+      "step": "duplicates",
+      "action": "duplicate product rows removed",
+      "rows_affected": 12
+    },
+    {
+      "step": "duplicates",
+      "action": "exact duplicate reviews removed (same author, product, text)",
+      "rows_affected": 902
+    },
+    {
+      "step": "duplicates",
+      "action": "syndicated copies removed (same author + text on another product)",
+      "rows_affected": 553
+    },
+    {
+      "step": "integrity",
+      "action": "reviews whose product_id has no product record removed",
+      "rows_affected": 302
+    },
+    {
+      "step": "text",
+      "action": "HTML tags/entities cleaned",
+      "rows_affected": 1805
+    },
+    {
+      "step": "text",
+      "action": "URLs cleaned",
+      "rows_affected": 576
+    },
+    {
+      "step": "text",
+      "action": "e-mail addresses (PII) cleaned",
+      "rows_affected": 123
+    },
+    {
+      "step": "text",
+      "action": "mojibake characters cleaned",
+      "rows_affected": 1164
+    },
+    {
+      "step": "text",
+      "action": "reviews with < 3 words flagged (excluded from NLP only)",
+      "rows_affected": 637
+    },
+    {
+      "step": "text",
+      "action": "possibly non-English reviews flagged",
+      "rows_affected": 585
+    },
+    {
+      "step": "text",
+      "action": "incentivised reviews flagged (free product / Influenster)",
+      "rows_affected": 2958
+    },
+    {
+      "step": "text",
+      "action": "author_id replaced by salted SHA-256 hash (privacy)",
+      "rows_affected": 59743
+    },
+    {
+      "step": "ingredients",
+      "action": "legal disclaimer text removed",
+      "rows_affected": 580
+    },
+    {
+      "step": "ingredients",
+      "action": "marketing descriptions ('-Niacinamide: ...') removed",
+      "rows_affected": 398
+    },
+    {
+      "step": "ingredients",
+      "action": "ingredient synonyms unified (e.g. Aqua -> water, Parfum -> fragrance)",
+      "rows_affected": 1135
+    },
+    {
+      "step": "missing",
+      "action": "missing product price recovered from review-level price snapshot",
+      "rows_affected": 35
+    },
+    {
+      "step": "missing",
+      "action": "remaining missing price imputed with brand x category median (groups >= 5)",
+      "rows_affected": 0
+    },
+    {
+      "step": "missing",
+      "action": "remaining missing price imputed with category median (groups >= 5)",
+      "rows_affected": 0
+    },
+    {
+      "step": "missing",
+      "action": "size left missing and flagged (not imputable without guessing)",
+      "rows_affected": 207
+    },
+    {
+      "step": "missing",
+      "action": "ingredients missing -> indicator column added",
+      "rows_affected": 73
+    },
+    {
+      "step": "missing",
+      "action": "highlights missing -> indicator column added",
+      "rows_affected": 289
+    },
+    {
+      "step": "missing",
+      "action": "skin_type missing -> 'unknown' category + indicator",
+      "rows_affected": 17911
+    },
+    {
+      "step": "missing",
+      "action": "skin_tone missing -> 'unknown' category + indicator",
+      "rows_affected": 15730
+    },
+    {
+      "step": "missing",
+      "action": "eye_color missing -> 'unknown' category + indicator",
+      "rows_affected": 20906
+    },
+    {
+      "step": "missing",
+      "action": "hair_color missing -> 'unknown' category + indicator",
+      "rows_affected": 17902
+    },
+    {
+      "step": "missing",
+      "action": "helpfulness missing (0 votes) -> Laplace-smoothed helpfulness score",
+      "rows_affected": 31733
+    },
+    {
+      "step": "missing",
+      "action": "is_recommended missing -> kept for EDA, excluded from model training",
+      "rows_affected": 7192
+    },
+    {
+      "step": "missing",
+      "action": "rating missing (after validity checks) -> kept, excluded from rating analyses",
+      "rows_affected": 161
+    },
+    {
+      "step": "outliers",
+      "action": "price-per-ml outliers flagged (|robust z| > 3.5 within category, log scale)",
+      "rows_affected": 4
+    },
+    {
+      "step": "outliers",
+      "action": "loves_count outliers by IQR rule on log scale (flagged, kept: viral products are real)",
+      "rows_affected": 9
+    },
+    {
+      "step": "outliers",
+      "action": "price_per_ml winsorised at 1th/99th percentiles (model copy)",
+      "rows_affected": 20
+    },
+    {
+      "step": "outliers",
+      "action": "loves_count winsorised at 1th/99th percentiles (model copy)",
+      "rows_affected": 24
+    },
+    {
+      "step": "outliers",
+      "action": "review word count capped at 99th percentile (model copy)",
+      "rows_affected": 578
+    },
+    {
+      "step": "features",
+      "action": "products claiming 'Fragrance Free' but listing fragrance in INCI flagged",
+      "rows_affected": 8
+    },
+    {
+      "step": "features",
+      "action": "10 active-ingredient flags + fragrance flag + 6 claim flags created",
+      "rows_affected": 1200
+    },
+    {
+      "step": "features",
+      "action": "skin_match feature (reviewer skin type == product 'Good for' claim)",
+      "rows_affected": 24734
+    },
+    {
+      "step": "features",
+      "action": "Bayesian-adjusted product rating (prior m = 20 reviews, global mean C = 4.07)",
+      "rows_affected": 1175
+    },
+    {
+      "step": "features",
+      "action": "time features: review_year, months_since_first_review",
+      "rows_affected": 59614
+    },
+    {
+      "step": "validation",
+      "action": "final assertions passed (ranges, integrity, duplicates, PII)",
+      "rows_affected": 59743
+    },
+    {
+      "step": "normalise",
+      "action": "model matrix: 90 features; train 41,952 / test 10,488 (time-based split)",
+      "rows_affected": 52440
+    }
+  ]
+}

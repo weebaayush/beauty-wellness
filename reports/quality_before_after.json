@@ -1,0 +1,36 @@
+{
+  "before": {
+    "products": 1212,
+    "reviews": 61500,
+    "duplicate_product_ids": 12,
+    "product_price_missing_or_invalid_%": 6.02,
+    "brand_name_distinct_spellings": 79,
+    "category_distinct_labels": 19,
+    "skin_type_distinct_labels": 15,
+    "skin_tone_distinct_labels": 18,
+    "skin_type_missing_%": 30.02,
+    "is_recommended_missing_%": 12.08,
+    "rating_invalid_(text_or_out_of_range)": 282,
+    "rating_missing": 0,
+    "review_text_with_html_%": 3.02,
+    "review_text_with_email_pii": 126,
+    "orphan_reviews": 310
+  },
+  "after": {
+    "products": 1200,
+    "reviews": 59743,
+    "duplicate_product_ids": 0,
+    "product_price_missing_or_invalid_%": 0.0,
+    "brand_name_distinct_spellings": 30,
+    "category_distinct_labels": 6,
+    "skin_type_distinct_labels": 4,
+    "skin_tone_distinct_labels": 12,
+    "skin_type_missing_%": 29.98,
+    "is_recommended_missing_%": 12.04,
+    "rating_invalid_(text_or_out_of_range)": 0,
+    "rating_missing": 161,
+    "review_text_with_html_%": 0.0,
+    "review_text_with_email_pii": 0,
+    "orphan_reviews": 0
+  }
+}

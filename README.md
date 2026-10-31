@@ -14,15 +14,27 @@ Full list with links and licences: [data/DATA_REGISTER.md](data/DATA_REGISTER.md
 ## Quick start
 ```bash
 pip install -r requirements.txt
-python src/download_data.py sephora   # needs a Kaggle API token
-python src/data_quality.py            # writes data/quality_report.md
+
+# Week 3 - cleaning pipeline (simulated raw data with known, injected issues)
+python src/simulate_raw_data.py --seed 42
+python -m src.cleaning.pipeline                 # writes data/processed + reports/
+python -m unittest discover -s tests -t . -v    # 9 unit tests
+python -m src.reporting.make_figures            # report figures
+
+# Real data
+python src/download_data.py sephora             # needs a Kaggle API token
+python -m src.cleaning.pipeline --raw data/raw/sephora
 ```
 
 ## Project structure
 ```
-docs/        Weekly reports (week1, week2, ...)
+configs/     cleaning.yaml - every threshold, mapping and path used by the pipeline
+docs/        Weekly reports (week1, week2, week3 + flowchart & figures)
 notebooks/   Jupyter notebooks for analysis
-src/         download_data.py, data_quality.py and reusable code
+src/         download_data.py, data_quality.py, simulate_raw_data.py
+src/cleaning/  9-stage cleaning & pre-processing pipeline (steps, imputation/outliers, scikit-learn preprocessing, audit log)
+tests/       unit tests for the cleaning pipeline
+reports/     cleaning log and before/after data-quality report
 data/        Data register; local data folders (not tracked)
 ```
 
@@ -31,8 +43,8 @@ data/        Data register; local data folders (not tracked)
 |---|---|---|
 | 1 | Orientation & problem definition — [report](docs/week1/) | ✅ Done |
 | 2 | Data identification, sourcing strategy & analysis plan — [report](docs/week2/), [data register](data/DATA_REGISTER.md), [scripts](src/) | ✅ Done |
-| 3 | Data collection, cleaning & exploratory analysis | ⏳ |
-| 4 | Sentiment & aspect analysis (NLP) | ⏳ |
+| 3 | Data cleaning & pre-processing pipeline — [report](docs/week3/), [code](src/cleaning/), [cleaning log](reports/cleaning_log.md), [before/after](reports/data_quality_before_after.md) | ✅ Done |
+| 4 | Exploratory analysis & hypothesis testing | ⏳ |
 | 5 | Predictive modelling & SHAP | ⏳ |
 | 6 | Recommender prototype & dashboard | ⏳ |
 

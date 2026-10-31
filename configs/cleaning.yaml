@@ -1,0 +1,76 @@
+# Week 3 - cleaning pipeline configuration.
+# Every threshold and mapping used by src/cleaning lives here, so a change in a
+# rule is visible in Git history and the pipeline stays reproducible.
+
+paths:
+  raw_dir: data/raw/simulated          # switch to data/raw/sephora for the real Kaggle data
+  interim_dir: data/interim
+  processed_dir: data/processed
+  reports_dir: reports
+
+seed: 42
+
+validity:
+  rating_min: 1
+  rating_max: 5
+  price_min_usd: 1        # nothing in skincare legitimately costs < $1
+  price_max_usd: 1000     # above this is treated as a data-entry error
+  max_date: "2023-03-31"  # dataset snapshot date; later dates are impossible
+  min_date: "2008-01-01"
+
+outliers:
+  robust_z_threshold: 3.5     # Iglewicz & Hoaglin modified z-score rule
+  winsor_lower_pct: 0.01
+  winsor_upper_pct: 0.99
+
+text:
+  min_words_for_nlp: 3
+  min_ascii_ratio: 0.9        # below this a review is flagged as possibly non-English
+  incentive_patterns:
+    - "received (?:this|it)? ?(?:product)? ?(?:for free|complimentary)"
+    - "in exchange for (?:my|an) honest review"
+    - "influenster"
+    - "gifted"
+
+missing:
+  unknown_label: "unknown"
+  min_group_size_for_impute: 5
+
+mappings:
+  skin_type:
+    dry: [dry, "dry skin"]
+    oily: [oily]
+    combination: [combination, combo, "comb.", "comb"]
+    normal: [normal]
+  skin_tone:
+    fair: [fair]
+    fairLight: [fairlight, "fair light"]
+    light: [light]
+    lightMedium: [lightmedium, "light medium", "light-medium"]
+    medium: [medium]
+    mediumTan: [mediumtan, "medium tan", "medium-tan"]
+    tan: [tan]
+    olive: [olive]
+    deep: [deep]
+    rich: [rich]
+    dark: [dark]
+    porcelain: [porcelain]
+    unknown: [notsurest, "not sure", "notsure"]
+  secondary_category:
+    Moisturizers: [moisturizers, moisturisers, moisturizer]
+    Treatments: [treatments, treatment]
+    Cleansers: [cleansers, cleanser]
+    Sunscreen: [sunscreen, sunscreens, "sun screen"]
+    Eye Care: ["eye care", "eye-care"]
+    Masks: [masks, mask]
+  ingredient_synonyms:        # INCI normalisation: many spellings -> one canonical name
+    water: [aqua, "water/aqua/eau", "aqua (water)", "eau"]
+    fragrance: [parfum, "fragrance (parfum)", "perfume"]
+    shea butter: ["butyrospermum parkii (shea) butter", "butyrospermum parkii butter"]
+    sodium hyaluronate: ["hyaluronic acid"]
+
+features:
+  key_actives: [niacinamide, retinol, "ascorbic acid", "salicylic acid", "sodium hyaluronate",
+                "ceramide np", "lactic acid", "zinc oxide", "centella asiatica extract", panthenol]
+  potential_irritants: [fragrance, linalool, limonene, citronellol, "alcohol denat."]
+  bayesian_prior_reviews: 20      # m in the Bayesian average rating
