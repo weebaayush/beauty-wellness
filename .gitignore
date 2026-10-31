@@ -12,3 +12,4 @@ __pycache__/
 kaggle.json
 data/processed/
 data/raw/simulated/*.csv
+models/

@@ -26,6 +26,10 @@ python -m src.features.build_features           # 35 engineered features
 python -m src.eda.run_eda                       # hypothesis tests + EDA figures
 python -m src.modeling.feature_value            # feature-set ablation + decision scenario
 
+# Week 5 - predictive modelling
+python -m src.modeling.train_models             # tune & compare 4 models, test, interpretation (~3-5 min)
+python -m src.modeling.robustness               # calibration, fairness, cold start, cost-based threshold
+
 # Real data
 python src/download_data.py sephora             # needs a Kaggle API token
 python -m src.cleaning.pipeline --raw data/raw/sephora
@@ -45,7 +49,9 @@ beauty-wellness/
 │   ├── week1/                   # problem definition report
 │   ├── week2/                   # data sourcing strategy report
 │   ├── week3/                   # cleaning pipeline report, flowchart (.dot), figures/
-│   └── week4/                   # EDA & feature engineering report, workflow (.dot), figures/
+│   ├── week4/                   # EDA & feature engineering report, workflow (.dot), figures/
+│   └── week5/                   # predictive modelling report, figures/
+├── models/                      # saved best model (generated, not tracked)
 ├── notebooks/                   # exploratory notebooks (Week 4+)
 ├── reports/                     # generated: cleaning log, data quality, EDA results, feature catalogue
 ├── src/
@@ -63,7 +69,9 @@ beauty-wellness/
 │   ├── eda/
 │   │   └── run_eda.py           # Week 4: EDA figures + hypothesis tests (H1, H2, H4, H6)
 │   ├── modeling/
-│   │   └── feature_value.py     # Week 4: feature ablation, permutation importance, scenario
+│   │   ├── feature_value.py     # Week 4: feature ablation, permutation importance, scenario
+│   │   ├── train_models.py      # Week 5: LR / tree / forest / boosting, time-series CV, selection, interpretation
+│   │   └── robustness.py        # Week 5: calibration, fairness CIs, unseen products, cost threshold
 │   └── reporting/
 │       └── make_figures.py      # Week 3 report figures
 ├── tests/
@@ -79,7 +87,7 @@ beauty-wellness/
 | 2 | Data identification, sourcing strategy & analysis plan — [report](docs/week2/), [data register](data/DATA_REGISTER.md), [scripts](src/) | ✅ Done |
 | 3 | Data cleaning & pre-processing pipeline — [report](docs/week3/), [code](src/cleaning/), [cleaning log](reports/cleaning_log.md), [before/after](reports/data_quality_before_after.md) | ✅ Done |
 | 4 | EDA & feature engineering — [report](docs/week4/), [features](src/features/), [EDA](src/eda/), [results](reports/eda_results.json) | ✅ Done |
-| 5 | Predictive modelling, SHAP & fairness | ⏳ |
+| 5 | Predictive modelling & algorithm selection — [report](docs/week5/), [code](src/modeling/), [results](reports/model_results.json) | ✅ Done |
 | 6 | Recommender prototype & dashboard | ⏳ |
 
 ## Tools
