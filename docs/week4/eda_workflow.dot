@@ -1,0 +1,19 @@
+digraph eda {
+  graph [rankdir=TB, fontname="Helvetica", nodesep=0.35, ranksep=0.45, bgcolor="white", pad=0.15];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9.5, fillcolor="white", color="#1a1a1a", width=1.55, height=0.9];
+  edge [color="#1a1a1a", arrowsize=0.6];
+  a [label=<<b>1. Data check</b><br/><font point-size="7.5">shape, types, flags,<br/>target balance</font>>, fillcolor="#1a1a1a", fontcolor="white"];
+  b [label=<<b>2. Univariate</b><br/><font point-size="7.5">distributions, skew,<br/>concentration</font>>];
+  c [label=<<b>3. Bivariate</b><br/><font point-size="7.5">segments × target,<br/>CIs, correlations</font>>];
+  d [label=<<b>4. Multivariate</b><br/><font point-size="7.5">heatmaps, PCA,<br/>k-means segments</font>>];
+  e [label=<<b>5. Hypothesis tests</b><br/><font point-size="7.5">H1–H6, effect sizes,<br/>Bonferroni</font>>];
+  f [label=<<b>6. Feature engineering</b><br/><font point-size="7.5">8 families,<br/>leak-free</font>>, fillcolor="#FFF1E8", color="#E8590C"];
+  g [label=<<b>7. Feature validation</b><br/><font point-size="7.5">mutual information,<br/>ablation, permutation</font>>];
+  h [label=<<b>8. Insights</b><br/><font point-size="7.5">business actions,<br/>decision scenario</font>>, fillcolor="#E8590C", fontcolor="white", color="#E8590C"];
+  {rank=same; a; b; c; d}
+  {rank=same; e; f; g; h}
+  a -> b -> c -> d; e -> f -> g -> h;
+  a -> e [style=invis]; b -> f [style=invis]; c -> g [style=invis]; d -> h [style=invis];
+  d -> e [constraint=false];
+  g -> f [style=dashed, color="#6b6b6b", constraint=false, label=" iterate", fontsize=7.5, fontcolor="#6b6b6b"];
+}

@@ -1,0 +1,296 @@
+{
+  "n_reviews": 59614,
+  "n_labelled": 52440,
+  "n_products": 1174,
+  "rating_share": {
+    "1.0": 0.0107,
+    "2.0": 0.0609,
+    "3.0": 0.192,
+    "4.0": 0.3217,
+    "5.0": 0.4147
+  },
+  "rating_mean": 4.068777017139589,
+  "rating_median": 4.0,
+  "rating_skew": -0.8184279105268923,
+  "rec_rate": 0.8138253241800153,
+  "gini_reviews": 0.7411746974816807,
+  "top_10pct_products_share": 0.6374677089274332,
+  "top_20_products_share": 0.32073002985875804,
+  "H1": {
+    "kruskal_H": 65.86847846658263,
+    "p": 3.2701667022055596e-14,
+    "epsilon_sq": 0.0017180465790337669,
+    "n": 36597,
+    "mean_rating": {
+      "dry": 4.0631567425569175,
+      "normal": 4.007307270734381,
+      "combination": 4.0583826158712695,
+      "oily": 4.135392881128274
+    },
+    "pairwise": [
+      {
+        "pair": "dry vs normal",
+        "p_bonf": 0.00017080621199241954
+      },
+      {
+        "pair": "dry vs combination",
+        "p_bonf": 1.0
+      },
+      {
+        "pair": "dry vs oily",
+        "p_bonf": 0.0001478617202988279
+      },
+      {
+        "pair": "normal vs combination",
+        "p_bonf": 0.0037912078586457842
+      },
+      {
+        "pair": "normal vs oily",
+        "p_bonf": 2.538918032498113e-14
+      },
+      {
+        "pair": "combination vs oily",
+        "p_bonf": 1.2150965430814873e-08
+      }
+    ],
+    "rec_rate": {
+      "combination": 0.81,
+      "dry": 0.81,
+      "normal": 0.7984,
+      "oily": 0.8357
+    }
+  },
+  "H2": {
+    "spearman_rho": -0.05912237644743471,
+    "p": 0.16123166257859553,
+    "ci95": [
+      -0.1410694023672201,
+      0.023629309899823796
+    ],
+    "n_products": 563,
+    "by_category": {
+      "Cleansers": 0.021938030197624744,
+      "Eye Care": -0.050412512085631106,
+      "Masks": 0.018069815364382135,
+      "Moisturizers": -0.06298612728788404,
+      "Sunscreen": -0.10813184181915678,
+      "Treatments": -0.0855965515761401
+    }
+  },
+  "H4": {
+    "rates": {
+      "dry_free": {
+        "rate": 0.8262473306154144,
+        "n": 5151
+      },
+      "normal_free": {
+        "rate": 0.7871460388164174,
+        "n": 3143
+      },
+      "combination_free": {
+        "rate": 0.7940033988832241,
+        "n": 8238
+      },
+      "oily_free": {
+        "rate": 0.8225128444652032,
+        "n": 4282
+      },
+      "dry_frag": {
+        "rate": 0.7854283426741393,
+        "n": 3747
+      },
+      "normal_frag": {
+        "rate": 0.8197781885397413,
+        "n": 2164
+      },
+      "combination_frag": {
+        "rate": 0.8336192109777015,
+        "n": 5830
+      },
+      "oily_frag": {
+        "rate": 0.8563648740639891,
+        "n": 2938
+      }
+    },
+    "dry_chi2": 23.131705417987366,
+    "dry_p": 1.5127563046366683e-06,
+    "dry_cramers_v": 0.05098678471920127,
+    "dry_gap_pp": 4.081898794127515,
+    "interaction_LR": 65.08204463578295,
+    "interaction_p": 4.8173682992143126e-14
+  },
+  "skin_fit": {
+    "Matches claim": {
+      "rate": 0.8991360691144709,
+      "n": 4630
+    },
+    "Other / neutral": {
+      "rate": 0.7897252090800478,
+      "n": 14229
+    },
+    "No claim or unknown skin": {
+      "rate": 0.8196198411665148,
+      "n": 30724
+    },
+    "Opposite skin type": {
+      "rate": 0.7332866643332167,
+      "n": 2857
+    }
+  },
+  "H6": {
+    "n_voted": 27953,
+    "median_words_top": 9.0,
+    "median_words_other": 9.0,
+    "p_length": 0.07575829743081956,
+    "rank_biserial": -0.014075150553012339,
+    "neg_share_top": 0.0948509485094851,
+    "neg_share_other": 0.06455925890554866,
+    "p_negative": 2.7210574323672556e-17
+  },
+  "time": {
+    "quarterly_rating_min": 4.021686746987951,
+    "quarterly_rating_max": 4.111434108527132
+  },
+  "seasonality_month_range": 0.02241368097408092,
+  "aspects_by_rating": {
+    "skin reaction neg": {
+      "1.0": 40.1,
+      "2.0": 40.9,
+      "3.0": 30.1,
+      "4.0": 0.0,
+      "5.0": 0.0
+    },
+    "texture": {
+      "1.0": 30.7,
+      "2.0": 28.5,
+      "3.0": 34.9,
+      "4.0": 28.7,
+      "5.0": 28.5
+    },
+    "scent": {
+      "1.0": 15.1,
+      "2.0": 15.2,
+      "3.0": 18.4,
+      "4.0": 14.2,
+      "5.0": 14.4
+    },
+    "value": {
+      "1.0": 16.5,
+      "2.0": 14.4,
+      "3.0": 19.2,
+      "4.0": 15.0,
+      "5.0": 14.7
+    },
+    "packaging": {
+      "1.0": 18.1,
+      "2.0": 16.5,
+      "3.0": 20.3,
+      "4.0": 16.4,
+      "5.0": 16.3
+    },
+    "efficacy": {
+      "1.0": 11.9,
+      "2.0": 15.5,
+      "3.0": 26.9,
+      "4.0": 28.3,
+      "5.0": 28.3
+    }
+  },
+  "corr_with_target": {
+    "price_rel_category": 0.016,
+    "n_ingredients": 0.006,
+    "strong_actives": -0.008,
+    "product_prior_bayes_rating": 0.29,
+    "product_momentum": 0.13,
+    "review_velocity": 0.027,
+    "brand_te": 0.134,
+    "profile_completeness": -0.002,
+    "review_word_count": -0.375,
+    "helpfulness_smoothed": -0.023,
+    "aspect_skin_reaction_neg": -0.44,
+    "skin_match": 0.123,
+    "dry_x_fragrance": -0.02,
+    "skin_mismatch": -0.05
+  },
+  "high_collinearity_pairs": [],
+  "mutual_info": {
+    "dry_x_fragrance": 0.0,
+    "is_early_adopter": 0.0,
+    "profile_completeness": 0.001,
+    "skin_mismatch": 0.001,
+    "premium_x_first_purchase": 0.0012,
+    "strong_actives": 0.0018,
+    "fragrance_free_verified": 0.0018,
+    "is_holiday_season": 0.0019,
+    "skin_match": 0.0023,
+    "helpfulness_smoothed": 0.0031,
+    "n_ingredients": 0.0069,
+    "n_actives_present": 0.0088,
+    "review_velocity": 0.0107,
+    "product_momentum": 0.0111,
+    "brand_te": 0.0134,
+    "price_per_ml": 0.033,
+    "price_rel_category": 0.036,
+    "product_prior_bayes_rating": 0.0499,
+    "loves_count": 0.0569,
+    "aspect_skin_reaction_neg": 0.0745,
+    "review_word_count": 0.1042
+  },
+  "segments": {
+    "k": 4,
+    "inertia": {
+      "2": 2495.1260523180235,
+      "3": 2076.1451495815695,
+      "4": 1793.0824448809235,
+      "5": 1611.1828272714833,
+      "6": 1458.6227648071617,
+      "7": 1305.440077329162
+    },
+    "pca_var": [
+      0.277,
+      0.244
+    ],
+    "profile": [
+      {
+        "segment": 0,
+        "products": 159,
+        "price_rel": 0.852,
+        "strong_actives": 1.478,
+        "fragranced": 0.465,
+        "fragrance_free_claim": 0.0,
+        "vegan": 0.0,
+        "rec_rate": 0.799
+      },
+      {
+        "segment": 1,
+        "products": 104,
+        "price_rel": 0.905,
+        "strong_actives": 2.231,
+        "fragranced": 0.269,
+        "fragrance_free_claim": 0.442,
+        "vegan": 1.0,
+        "rec_rate": 0.809
+      },
+      {
+        "segment": 2,
+        "products": 139,
+        "price_rel": 0.958,
+        "strong_actives": 3.0,
+        "fragranced": 0.655,
+        "fragrance_free_claim": 0.0,
+        "vegan": 0.058,
+        "rec_rate": 0.791
+      },
+      {
+        "segment": 3,
+        "products": 128,
+        "price_rel": 1.061,
+        "strong_actives": 2.289,
+        "fragranced": 0.023,
+        "fragrance_free_claim": 1.0,
+        "vegan": 0.0,
+        "rec_rate": 0.806
+      }
+    ]
+  }
+}

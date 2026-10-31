@@ -21,6 +21,11 @@ python -m src.cleaning.pipeline                 # writes data/processed + report
 python -m unittest discover -s tests -t . -v    # 9 unit tests
 python -m src.reporting.make_figures            # report figures
 
+# Week 4 - EDA & feature engineering
+python -m src.features.build_features           # 35 engineered features
+python -m src.eda.run_eda                       # hypothesis tests + EDA figures
+python -m src.modeling.feature_value            # feature-set ablation + decision scenario
+
 # Real data
 python src/download_data.py sephora             # needs a Kaggle API token
 python -m src.cleaning.pipeline --raw data/raw/sephora
@@ -39,9 +44,10 @@ beauty-wellness/
 ├── docs/
 │   ├── week1/                   # problem definition report
 │   ├── week2/                   # data sourcing strategy report
-│   └── week3/                   # cleaning pipeline report, flowchart (.dot), figures/
+│   ├── week3/                   # cleaning pipeline report, flowchart (.dot), figures/
+│   └── week4/                   # EDA & feature engineering report, workflow (.dot), figures/
 ├── notebooks/                   # exploratory notebooks (Week 4+)
-├── reports/                     # generated: cleaning log, before/after data quality
+├── reports/                     # generated: cleaning log, data quality, EDA results, feature catalogue
 ├── src/
 │   ├── download_data.py         # Week 2: fetch Sephora, FDA CAERS, Google Trends
 │   ├── data_quality.py          # Week 2: first quality profile of real Sephora data
@@ -52,8 +58,14 @@ beauty-wellness/
 │   │   ├── preprocess.py        #   scikit-learn scaling/encoding, time-based split
 │   │   ├── log.py               #   audit log
 │   │   └── pipeline.py          #   runs every stage, writes outputs
+│   ├── features/
+│   │   └── build_features.py    # Week 4: 35 leak-free engineered features (8 families)
+│   ├── eda/
+│   │   └── run_eda.py           # Week 4: EDA figures + hypothesis tests (H1, H2, H4, H6)
+│   ├── modeling/
+│   │   └── feature_value.py     # Week 4: feature ablation, permutation importance, scenario
 │   └── reporting/
-│       └── make_figures.py      # report figures
+│       └── make_figures.py      # Week 3 report figures
 ├── tests/
 │   └── test_cleaning.py         # 9 unit tests
 ├── requirements.txt
@@ -66,8 +78,8 @@ beauty-wellness/
 | 1 | Orientation & problem definition — [report](docs/week1/) | ✅ Done |
 | 2 | Data identification, sourcing strategy & analysis plan — [report](docs/week2/), [data register](data/DATA_REGISTER.md), [scripts](src/) | ✅ Done |
 | 3 | Data cleaning & pre-processing pipeline — [report](docs/week3/), [code](src/cleaning/), [cleaning log](reports/cleaning_log.md), [before/after](reports/data_quality_before_after.md) | ✅ Done |
-| 4 | Exploratory analysis & hypothesis testing | ⏳ |
-| 5 | Predictive modelling & SHAP | ⏳ |
+| 4 | EDA & feature engineering — [report](docs/week4/), [features](src/features/), [EDA](src/eda/), [results](reports/eda_results.json) | ✅ Done |
+| 5 | Predictive modelling, SHAP & fairness | ⏳ |
 | 6 | Recommender prototype & dashboard | ⏳ |
 
 ## Tools
