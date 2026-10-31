@@ -28,14 +28,36 @@ python -m src.cleaning.pipeline --raw data/raw/sephora
 
 ## Project structure
 ```
-configs/     cleaning.yaml - every threshold, mapping and path used by the pipeline
-docs/        Weekly reports (week1, week2, week3 + flowchart & figures)
-notebooks/   Jupyter notebooks for analysis
-src/         download_data.py, data_quality.py, simulate_raw_data.py
-src/cleaning/  9-stage cleaning & pre-processing pipeline (steps, imputation/outliers, scikit-learn preprocessing, audit log)
-tests/       unit tests for the cleaning pipeline
-reports/     cleaning log and before/after data-quality report
-data/        Data register; local data folders (not tracked)
+beauty-wellness/
+├── configs/
+│   └── cleaning.yaml            # every threshold, mapping and path used by the pipeline
+├── data/
+│   ├── DATA_REGISTER.md         # all sources, links, licences (Week 2)
+│   ├── raw/                     # untouched downloads / simulated raw data   (not tracked)
+│   ├── interim/                 # merged, typed tables                       (not tracked)
+│   └── processed/               # clean, model-ready tables                  (not tracked)
+├── docs/
+│   ├── week1/                   # problem definition report
+│   ├── week2/                   # data sourcing strategy report
+│   └── week3/                   # cleaning pipeline report, flowchart (.dot), figures/
+├── notebooks/                   # exploratory notebooks (Week 4+)
+├── reports/                     # generated: cleaning log, before/after data quality
+├── src/
+│   ├── download_data.py         # Week 2: fetch Sephora, FDA CAERS, Google Trends
+│   ├── data_quality.py          # Week 2: first quality profile of real Sephora data
+│   ├── simulate_raw_data.py     # Week 3: raw data generator with injected issues
+│   ├── cleaning/                # Week 3: 9-stage pipeline
+│   │   ├── steps.py             #   schema, standardise, validity, duplicates, text, INCI
+│   │   ├── impute_outliers.py   #   missing values, outliers, feature engineering
+│   │   ├── preprocess.py        #   scikit-learn scaling/encoding, time-based split
+│   │   ├── log.py               #   audit log
+│   │   └── pipeline.py          #   runs every stage, writes outputs
+│   └── reporting/
+│       └── make_figures.py      # report figures
+├── tests/
+│   └── test_cleaning.py         # 9 unit tests
+├── requirements.txt
+└── README.md
 ```
 
 ## Progress
